@@ -13,20 +13,20 @@ import fr.diginamic.jdbc.entites.Fournisseur;
 
 public class FournisseurDaoJdbc implements FournisseurDao {
 
-	static final ResourceBundle config = ResourceBundle.getBundle("fichier");
-	static final String URL = config.getString("database.url");
-	static final String USER = config.getString("database.user");
-	static final String PASS = config.getString("database.pass");
 	
+	
+	public static void jdbcModif() {
+		
+		
+	}
 
 	@Override
-	public List<Fournisseur> extraire() {
+	public List<Fournisseur> extraire(Connection connection) {
 		
 		ArrayList<Fournisseur> listeFounisseurs = new ArrayList<>();
 		
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection connection = DriverManager.getConnection(URL, USER, PASS);
+			
 
 			Statement stat = connection.createStatement();
 			 
@@ -41,7 +41,7 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 
 			stat.close();
 
-			connection.close();
+			
 
 		} catch (SQLException e) {
 
@@ -54,10 +54,9 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 	}
 
 	@Override
-	public void insert(Fournisseur fournisseur) {
+	public void insert(Connection connection,Fournisseur fournisseur) {
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection connection = DriverManager.getConnection(URL,USER,PASS);
+
 			
 			
 			Statement stat = connection.createStatement();
@@ -67,7 +66,6 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 			
 			stat.close();
 			
-			connection.close();
 			
 		} catch (SQLException e) {
 			
@@ -77,11 +75,9 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 	}
 
 	@Override
-	public int update(String ancienNom, String nouveauNom) {
+	public int update(Connection connection,String ancienNom, String nouveauNom) {
 		int nb=0;
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection connection = DriverManager.getConnection(URL,USER,PASS);
 			
 			
 			Statement stat = connection.createStatement();
@@ -90,7 +86,7 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 			
 			stat.close();
 			
-			connection.close();
+
 			
 		} catch (SQLException e) {
 			
@@ -100,11 +96,10 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 	}
 
 	@Override
-	public boolean delete(Fournisseur fournisseur) {
+	public boolean delete(Connection connection,Fournisseur fournisseur) {
 		boolean verif=false;
 		try {
-			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			Connection connection = DriverManager.getConnection(URL,USER,PASS);
+
 			
 			
 			Statement stat = connection.createStatement();
@@ -116,7 +111,7 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 			
 			stat.close();
 			
-			connection.close();
+		
 			
 		} catch (SQLException e) {
 			
