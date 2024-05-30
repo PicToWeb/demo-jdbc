@@ -34,6 +34,7 @@ public class TestSelect {
 			listeFounisseurs.forEach(f->System.out.println(f.toString()));
 		
 			
+			resultat.close();
 			
 			stat.close();
 			
