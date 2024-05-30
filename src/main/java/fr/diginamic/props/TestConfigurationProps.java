@@ -21,6 +21,8 @@ public class TestConfigurationProps {
 		System.out.println(key + " "+ config.getString(key));
 		System.out.println(StringUtils.toString(" ", key,config.getString(key))); 
 		}
+		
+		
 
 	}
 
