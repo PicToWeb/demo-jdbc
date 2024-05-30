@@ -13,23 +13,19 @@ import fr.diginamic.jdbc.entites.Fournisseur;
 
 public class FournisseurDaoJdbc implements FournisseurDao {
 
-	
-	
 	public static void jdbcModif() {
-		
-		
+
 	}
 
 	@Override
 	public List<Fournisseur> extraire(Connection connection) {
-		
+
 		ArrayList<Fournisseur> listeFounisseurs = new ArrayList<>();
-		
+
 		try {
-			
 
 			Statement stat = connection.createStatement();
-			 
+
 			ResultSet resultat = stat.executeQuery("SELECT * FROM FOURNISSEUR");
 
 			while (resultat.next()) {
@@ -40,8 +36,6 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 			resultat.close();
 
 			stat.close();
-
-			
 
 		} catch (SQLException e) {
 
@@ -54,67 +48,56 @@ public class FournisseurDaoJdbc implements FournisseurDao {
 	}
 
 	@Override
-	public void insert(Connection connection,Fournisseur fournisseur) {
+	public void insert(Connection connection, Fournisseur fournisseur) {
 		try {
 
-			
-			
 			Statement stat = connection.createStatement();
-			 stat.executeUpdate("INSERT INTO FOURNISSEUR (ID,NOM) VALUES (" + fournisseur.getId()+ ",\""+ fournisseur.getNom()+ "\")");
+			stat.executeUpdate("INSERT INTO FOURNISSEUR (ID,NOM) VALUES (" + fournisseur.getId() + ",\""
+					+ fournisseur.getNom() + "\")");
 
-			
-			
 			stat.close();
-			
-			
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
 	@Override
-	public int update(Connection connection,String ancienNom, String nouveauNom) {
-		int nb=0;
+	public int update(Connection connection, String ancienNom, String nouveauNom) {
+		int nb = 0;
 		try {
-			
-			
-			Statement stat = connection.createStatement();
-			nb = stat.executeUpdate("UPDATE FOURNISSEUR SET NOM = \"" + nouveauNom + "\" WHERE NOM=\"" + ancienNom + "\"");
-			
-			
-			stat.close();
-			
 
-			
+			Statement stat = connection.createStatement();
+			nb = stat.executeUpdate(
+					"UPDATE FOURNISSEUR SET NOM = \"" + nouveauNom + "\" WHERE NOM=\"" + ancienNom + "\"");
+
+			stat.close();
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return nb;
 	}
 
 	@Override
-	public boolean delete(Connection connection,Fournisseur fournisseur) {
-		boolean verif=false;
+	public boolean delete(Connection connection, Fournisseur fournisseur) {
+		boolean verif = false;
 		try {
 
-			
-			
 			Statement stat = connection.createStatement();
 			int nb = stat.executeUpdate("DELETE FROM FOURNISSEUR WHERE ID=" + fournisseur.getId() + "");
-			
-			if (nb==1) {
-				verif=true;
+
+			if (nb == 1) {
+				verif = true;
 			}
-			
+
 			stat.close();
-			
-		
-			
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return verif;
