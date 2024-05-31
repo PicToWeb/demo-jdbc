@@ -1,4 +1,4 @@
-package fr.diginamic.jdbc;
+package fr.diginamic.jdbc.entites;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class TestDelete {
+public class TestUpdate {
 
 	public static void main(String[] args) {
 		ResourceBundle config = ResourceBundle.getBundle("fichier");
@@ -19,7 +19,7 @@ public class TestDelete {
 			Connection connection = DriverManager.getConnection(url,user,pass);
 			
 			Statement stat = connection.createStatement();
-			int nb = stat.executeUpdate("DELETE FROM FOURNISSEUR WHERE ID=4");
+			int nb = stat.executeUpdate("UPDATE FOURNISSEUR SET NOM = 'La Maison des Peintures' WHERE ID=4");
 
 			System.out.println(nb);
 			

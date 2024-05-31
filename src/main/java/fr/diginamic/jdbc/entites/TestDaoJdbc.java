@@ -1,10 +1,11 @@
-package fr.diginamic.jdbc.dao;
+package fr.diginamic.jdbc.entites;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import fr.diginamic.jdbc.entites.Fournisseur;
+import fr.diginamic.jdbc.dao.FournisseurDao;
+import fr.diginamic.jdbc.dao.FournisseurDaoJdbc;
 
 public class TestDaoJdbc {
 

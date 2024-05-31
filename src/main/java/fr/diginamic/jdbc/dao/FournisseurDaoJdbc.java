@@ -12,9 +12,7 @@ import fr.diginamic.jdbc.entites.Fournisseur;
 
 public class FournisseurDaoJdbc implements FournisseurDao {
 
-	public static void jdbcModif() {
 
-	}
 	
 	@Override
 	public List<Fournisseur> extraireAll(Connection connection) {

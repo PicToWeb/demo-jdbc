@@ -7,5 +7,6 @@ public interface GenericDao<T> {
 	List <T> extraire();
 	void insert (T nvObjet);
 	void update(int id, T nvObjet);
+	void update2(String ancienNom, String nouveauNom);
 	void delete(int id);
 }
