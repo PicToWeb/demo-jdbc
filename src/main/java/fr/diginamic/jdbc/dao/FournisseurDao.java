@@ -13,7 +13,8 @@ public interface FournisseurDao {
 	static final String USER = config.getString("database.user");
 	static final String PASS = config.getString("database.pass");
 
-	List<Fournisseur> extraire(Connection connection);
+	List<Fournisseur> extraire(Connection connection,int id);
+	List<Fournisseur> extraireAll(Connection connection);
 
 	void insert(Connection connection, Fournisseur fournisseur);
 
